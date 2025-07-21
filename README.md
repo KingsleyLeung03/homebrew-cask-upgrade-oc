@@ -1,14 +1,18 @@
 [![CI](https://github.com/KingsleyLeung03/homebrew-cask-upgrade-oc/actions/workflows/ci.yml/badge.svg)](https://github.com/KingsleyLeung03/homebrew-cask-upgrade-oc/actions/workflows/ci.yml)
 
 
-# brew-cask-upgrade
+# brew-cask-upgrade-oc
 
-`brew-cask-upgrade` is a command-line tool for upgrading every outdated app
+Kingsley Leung (Zihong Liang)
+
+This project is a fork of the original [homebrew-cask-upgrade](https://github.com/buo/homebrew-cask-upgrade) by [buo](https://github.com/buo). The fork is intended to add auto-retries for installation failures, which can be particularly useful for users of OpenCore Legacy Patcher (OCLP).  
+
+`brew-cask-upgrade-oc` is a command-line tool for upgrading every outdated app
 installed by [Homebrew Cask](https://github.com/Homebrew/homebrew-cask).
 
 Homebrew Cask extends [Homebrew](http://brew.sh) and brings its elegance, simplicity, and speed to the installation and management of GUI macOS applications and large binaries alike.
 
-`brew-cask-upgrade` is an external command to replace the native `upgrade` by offering interactivity, an improved interface, and higher granularity of what to upgrade.
+`brew-cask-upgrade-oc` is an external command to replace the native `upgrade` by offering interactivity, an improved interface, higher granularity of what to upgrade, and auto-retries for failed installations (which helps resolving intermittent issues, such as the `listxattr for destination failed: 2` error sometimes seen on systems with OpenCore Legacy Patcher (OCLP)).
 
 ## Installation
 
@@ -53,6 +57,11 @@ latest versions of all the installed casks (this can be disabled, see options be
 It is also possible to use `*` to install multiple casks at once, i.e. `brew cu flash-*` to install all casks starting with `flash-` prefix.
 
 [![asciicast](https://asciinema.org/a/DlXUmiFFVnDhIDe2tCGo3ecLW.png)](https://asciinema.org/a/DlXUmiFFVnDhIDe2tCGo3ecLW)
+
+### Auto-retry on installation failure
+
+`brew cu` will automatically retry a cask installation once if the initial attempt fails. This can help resolve intermittent issues, such as the `listxattr for destination failed: 2` error sometimes seen on systems with OpenCore Legacy Patcher (OCLP).  
+Note: This auto-retry mechanism does not apply to Mac App Store applications.
 
 ### Apps with auto-update
 
