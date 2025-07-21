@@ -1,4 +1,4 @@
-[![CI](https://github.com/buo/homebrew-cask-upgrade/actions/workflows/ci.yml/badge.svg)](https://github.com/buo/homebrew-cask-upgrade/actions/workflows/ci.yml)
+[![CI](https://github.com/KingsleyLeung03/homebrew-cask-upgrade-oc/actions/workflows/ci.yml/badge.svg)](https://github.com/KingsleyLeung03/homebrew-cask-upgrade-oc/actions/workflows/ci.yml)
 
 
 # brew-cask-upgrade
@@ -13,7 +13,7 @@ Homebrew Cask extends [Homebrew](http://brew.sh) and brings its elegance, simpli
 ## Installation
 
 ```shell
-brew tap buo/cask-upgrade
+brew tap KingsleyLeung03/cask-upgrade-oc
 ```
 
 ### Verification of installation
@@ -21,7 +21,7 @@ In order to simply verify that `brew cu` is correctly installed, you can simply 
 
 ```shell
 > brew tap
-buo/cask-upgrade
+KingsleyLeung03/cask-upgrade-oc
 homebrew/bundle
 homebrew/cask
 homebrew/core
@@ -30,7 +30,7 @@ homebrew/core
 ## Uninstallation
 
 ```shell
-brew untap buo/cask-upgrade
+brew untap KingsleyLeung03/cask-upgrade-oc
 ```
 
 ## Usage
