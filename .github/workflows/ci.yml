@@ -2,9 +2,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 permissions:
   contents: read
@@ -13,11 +13,11 @@ jobs:
   upgrade:
     strategy:
       matrix:
-        os: 
-         - macos-13
-         - macos-14
-         - macos-15
-         - macos-latest
+        os:
+          - macos-13
+          - macos-14
+          - macos-15
+          - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -25,13 +25,20 @@ jobs:
 
       - name: Brew Update
         run: |
-            brew update
-            brew --version
-      
-      - name: Setup Homebrew Tap
+          brew update
+          brew --version
+
+      - name: Setup Homebrew Tap (pre-Sonoma)
+        if: matrix.os == 'macos-13'
         run: |
-          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
-          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          mkdir -p /usr/local/Homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          cp -rf . /usr/local/Homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+
+      - name: Setup Homebrew Tap (Sonoma and later)
+        if: matrix.os != 'macos-13'
+        run: |
+          mkdir -p /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          cp -rf . /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
 
       - name: Run Brew Cask Upgrade
         run: brew cu -y -a --no-brew-update
@@ -42,7 +49,7 @@ jobs:
   pinning-workflow:
     strategy:
       matrix:
-        os: 
+        os:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
@@ -56,8 +63,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
-          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          mkdir -p /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          cp -rf . /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
 
       - name: Verify cask is reporting outdated
         run: brew cu --all --no-brew-update google-chrome --report-only || test $? -eq 1
@@ -77,7 +84,7 @@ jobs:
   pinned-export-workflow:
     strategy:
       matrix:
-        os: 
+        os:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
@@ -91,8 +98,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
-          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          mkdir -p /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          cp -rf . /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
 
       - name: Pin google-chrome
         run: brew cu pin google-chrome
@@ -109,7 +116,7 @@ jobs:
   pinned-load-workflow:
     strategy:
       matrix:
-        os: 
+        os:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
@@ -123,8 +130,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
-          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          mkdir -p /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          cp -rf . /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
 
       - name: Setup backup file
         run: echo "google-chrome" > /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc/backup.txt
