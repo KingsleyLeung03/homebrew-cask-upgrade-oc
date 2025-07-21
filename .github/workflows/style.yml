@@ -35,8 +35,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
-          cp -rf . $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
 
       - name: Style check
         run: brew style --display-cop-names KingsleyLeung03/homebrew-cask-upgrade-oc

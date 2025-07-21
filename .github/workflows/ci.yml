@@ -30,8 +30,8 @@ jobs:
       
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
-          cp -rf . $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
 
       - name: Run Brew Cask Upgrade
         run: brew cu -y -a --no-brew-update
@@ -56,8 +56,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
-          cp -rf . $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
 
       - name: Verify cask is reporting outdated
         run: brew cu --all --no-brew-update google-chrome --report-only || test $? -eq 1
@@ -91,8 +91,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
-          cp -rf . $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
 
       - name: Pin google-chrome
         run: brew cu pin google-chrome
@@ -123,8 +123,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-          mkdir -p $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
-          cp -rf . $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          mkdir -p "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
+          cp -rf . "$HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc"
 
       - name: Setup backup file
         run: echo "google-chrome" > /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc/backup.txt
