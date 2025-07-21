@@ -6,11 +6,11 @@ name: Style check
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   schedule:
-    - cron: '0 7 * * 1'
+    - cron: "0 7 * * 1"
 
 permissions:
   contents: read
@@ -20,7 +20,7 @@ jobs:
   # This workflow contains a job called "style-check"
   style-check:
     # The type of runner that the job will run on
-    runs-on: macos-14
+    runs-on: macos-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,13 +30,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Brew Update
         run: |
-            brew update
-            brew --version
+          brew update
+          brew --version
 
       - name: Setup Homebrew Tap
         run: |
-            mkdir -p /opt/homebrew/Library/Taps/buo/homebrew-cask-upgrade
-            cp -rf . /opt/homebrew/Library/Taps/buo/homebrew-cask-upgrade
+          mkdir -p /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          cp -rf . /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
 
       - name: Style check
-        run: brew style --display-cop-names buo/homebrew-cask-upgrade
+        run: brew style --display-cop-names KingsleyLeung03/homebrew-cask-upgrade-oc

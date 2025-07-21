@@ -145,12 +145,17 @@ module Bcu
       begin
         if app[:mas]
           cmd = "mas upgrade #{app[:mas_id]}"
+          success = system cmd.to_s
         else
           # Force to install the latest version.
           app_str = app[:tap].nil? ? app[:token] : "#{app[:tap]}/#{app[:token]}"
           cmd = "brew reinstall #{options.install_options} #{app_str} --force " + verbose_flag
+          success = system cmd.to_s
+          unless success
+            ohai "Reinstall for #{app[:token]} failed, trying again."
+            success = system cmd.to_s
+          end
         end
-        success = system cmd.to_s
       rescue
         success = false
       end

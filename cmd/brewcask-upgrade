@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#Create a noninteractive `brew-cask` external command by wrapping `brew-cu` (https://github.com/buo/homebrew-cask-upgrade)
+#Create a noninteractive `brew-cask` external command by wrapping `brew-cu` (https://github.com/KingsleyLeung03/homebrew-cask-upgrade-oc)
 
 #Use `brew-cu` to list all outdated casks, but reject upgrading them if `brew-cu` wants interactive input, by feeding it a stream of "n"
 yes n | brew cu "${@}"
