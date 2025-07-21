@@ -20,7 +20,7 @@ jobs:
   # This workflow contains a job called "style-check"
   style-check:
     # The type of runner that the job will run on
-    runs-on: macos-14
+    runs-on: macos-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -35,8 +35,8 @@ jobs:
 
       - name: Setup Homebrew Tap
         run: |
-            mkdir -p /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
-            cp -rf . /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          mkdir -p $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
+          cp -rf . $HOMEBREW_PREFIX/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
 
       - name: Style check
         run: brew style --display-cop-names KingsleyLeung03/homebrew-cask-upgrade-oc
