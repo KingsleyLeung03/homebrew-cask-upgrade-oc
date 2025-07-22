@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name        = "brew-cask-upgrade-oc"
   s.version     = "2.0.3"
   s.summary     = "A command line tool for Homebrew Cask on OCLP-enabled devices"
-  s.description = "A command line tool for upgrading every outdated app installed by Homebrew Cask, with auto-retries for OCLP-enabled devices"
+  s.description = "A command line tool for upgrading every outdated app installed by Homebrew Cask on OCLP-enabled devices"
   s.authors     = ["buo", "KingsleyLeung03"]
   s.email       = "80824242+KingsleyLeung03@users.noreply.github.com"
   s.files       = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
