@@ -152,7 +152,7 @@ module Bcu
           cmd = "brew reinstall #{options.install_options} #{app_str} --force " + verbose_flag
           success = system cmd.to_s
           unless success
-            ohai "Reinstall for #{app[:token]} failed, trying again."
+            ohai "Upgrade of #{app[:token]} failed, trying again."
             success = system cmd.to_s
           end
         end
