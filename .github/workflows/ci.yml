@@ -21,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v5.0.0
 
       - name: Brew Update
         run: |
@@ -34,7 +34,7 @@ jobs:
           mkdir -p /usr/local/Homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
           cp -rf . /usr/local/Homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
 
-      - name: Setup Homebrew Tap (Sonoma and later)
+      - name: Setup Homebrew Tap (Sonoma and above)
         if: matrix.os != 'macos-13'
         run: |
           mkdir -p /opt/homebrew/Library/Taps/KingsleyLeung03/homebrew-cask-upgrade-oc
@@ -54,7 +54,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v5.0.0
 
       - name: Brew Update
         run: |
@@ -89,7 +89,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v5.0.0
 
       - name: Brew Update
         run: |
@@ -121,7 +121,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v5.0.0
 
       - name: Brew Update
         run: |
